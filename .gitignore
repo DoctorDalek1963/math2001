@@ -5,3 +5,6 @@
 /build
 /.lake/
 /.cache
+
+.direnv/
+.pre-commit-config.yaml
