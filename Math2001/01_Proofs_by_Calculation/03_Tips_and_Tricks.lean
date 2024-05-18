@@ -9,7 +9,6 @@ math2001_init
 Exercise: choose some of these examples and type out the whole proofs printed in the text as Lean
 proofs. -/
 
-
 -- Example 1.3.1
 example {a b : ℤ} (h1 : a = 2 * b + 5) (h2 : b = 3) : a = 11 :=
   calc
@@ -32,7 +31,6 @@ example {a b : ℝ} (h1 : a - 5 * b = 4) (h2 : b + 2 = 3) : a = 9 :=
     _ = 4 + 5 * ((b + 2) - 2) := by ring
     _ = 4 + 5 * (3 - 2) := by rw [h2]
     _ = 9 := by ring
-
 
 -- Example 1.3.4
 example {w : ℚ} (h1 : 3 * w + 1 = 4) : w = 1 :=
@@ -91,42 +89,49 @@ example {z : ℝ} (h1 : z ^ 2 - 2 = 0) : z ^ 4 - z ^ 3 - z ^ 2 + 2 * z + 1 = 3 :
 Solve these problems yourself.  You may find it helpful to solve them on paper before typing them
 up in Lean. -/
 
+-- 1.3.11.1
 example {x y : ℝ} (h1 : x = 3) (h2 : y = 4 * x - 3) : y = 9 :=
   calc
     y = 4 * x - 3 := by exact h2
     _ = 4 * 3 - 3 := by rw [h1]
     _ = 9 := by ring
 
+-- 1.3.11.2
 example {a b : ℤ} (h : a - b = 0) : a = b :=
   calc
     a = (a - b) + b := by ring
     _ = 0 + b := by rw [h]
     _ = b := by ring
 
+-- 1.3.11.3
 example {x y : ℤ} (h1 : x - 3 * y = 5) (h2 : y = 3) : x = 14 :=
   calc
     x = (x - 3 * y) + 3 * y := by ring
     _ = 5 + 3 * 3 := by rw [h1, h2]
     _ = 14 := by ring
 
+-- 1.3.11.4
 example {p q : ℚ} (h1 : p - 2 * q = 1) (h2 : q = -1) : p = -1 :=
   calc
     p = (p - 2 * q) + 2 * q := by ring
     _ = 1 + 2 * (-1) := by rw [h1, h2]
     _ = -1 := by ring
 
+-- 1.3.11.5
 example {x y : ℚ} (h1 : y + 1 = 3) (h2 : x + 2 * y = 3) : x = -1 :=
   calc
     x = (x + 2 * y) - 2 * (y + 1) + 2 := by ring
     _ = 3 - 2 * 3 + 2 := by rw [h1, h2]
     _ = -1 := by ring
 
+-- 1.3.11.6
 example {p q : ℤ} (h1 : p + 4 * q = 1) (h2 : q - 1 = 2) : p = -11 :=
   calc
     p = (p + 4 * q) - 4 * (q - 1) - 4 := by ring
     _ = 1 - 4 * 2 - 4 := by rw [h1, h2]
     _ = -11 := by ring
 
+-- 1.3.11.7
 example {a b c : ℝ}
     (h1 : a + 2 * b + 3 * c = 7)
     (h2 : b + 2 * c = 3)
@@ -137,36 +142,42 @@ example {a b c : ℝ}
     _ = 7 - 2 * 3 + 1 := by rw [h1, h2, h3]
     _ = 2 := by ring
 
+-- 1.3.11.8
 example {u v : ℚ} (h1 : 4 * u + v = 3) (h2 : v = 2) : u = 1 / 4 :=
   calc
     u = ((4 * u + v) - v) / 4 := by ring
     _ = (3 - 2) / 4 := by rw [h1, h2]
     _ = 1 / 4 := by ring
 
+-- 1.3.11.9
 example {c : ℚ} (h1 : 4 * c + 1 = 3 * c - 2) : c = -3 :=
   calc
     c = (4 * c + 1) - (3 * c - 2) - 3 := by ring
     _ = (4 * c + 1) - (4 * c + 1) - 3 := by rw [h1]
     _ = -3 := by ring
 
+-- 1.3.11.10
 example {p : ℝ} (h1 : 5 * p - 3 = 3 * p + 1) : p = 2 := by
   calc
     p = ((5 * p - 3) - (3 * p + 1) + 4) / 2 := by ring
     _ = ((5 * p - 3) - (5 * p - 3) + 4) / 2 := by rw [h1]
     _ = 2 := by ring
 
+-- 1.3.11.11
 example {x y : ℤ} (h1 : 2 * x + y = 4) (h2 : x + y = 1) : x = 3 :=
   calc
     x = (2 * x + y) - (x + y) := by ring
     _ = 4 - 1 := by rw [h1, h2]
     _ = 3 := by ring
 
+-- 1.3.11.12
 example {a b : ℝ} (h1 : a + 2 * b = 4) (h2 : a - b = 1) : a = 2 :=
   calc
     a = (2 * (a - b) + (a + 2 * b)) / 3 := by ring
     _ = (2 * 1 + 4) / 3 := by rw [h1, h2]
     _ = 2 := by ring
 
+-- 1.3.11.13
 example {u v : ℝ} (h1 : u + 1 = v) : u ^ 2 + 3 * u + 1 = v ^ 2 + v - 1 :=
   calc
     u ^ 2 + 3 * u + 1
@@ -175,6 +186,7 @@ example {u v : ℝ} (h1 : u + 1 = v) : u ^ 2 + 3 * u + 1 = v ^ 2 + v - 1 :=
     _ = v ^ 2 + v - 1 := by rw [h1]
     _ = v ^ 2 + v - 1 := by ring
 
+-- 1.3.11.14
 example {t : ℚ} (ht : t ^ 2 - 4 = 0) :
     t ^ 4 + 3 * t ^ 3 - 3 * t ^ 2 - 2 * t - 2
     = 10 * t + 2 :=
@@ -184,6 +196,7 @@ example {t : ℚ} (ht : t ^ 2 - 4 = 0) :
     _ = 0 * (t ^ 2 + 3 * t + 1) + 10 * t + 2 := by rw [ht]
     _ = 10 * t + 2 := by ring
 
+-- 1.3.11.15
 example {x y : ℝ} (h1 : x + 3 = 5) (h2 : 2 * x - y * x = 0) : y = 2 :=
   have h3 : x = 2 := by calc
     x = (x + 3) - 3 := by ring
@@ -201,6 +214,7 @@ example {x y : ℝ} (h1 : x + 3 = 5) (h2 : 2 * x - y * x = 0) : y = 2 :=
     _ = (4 - 0) / 2 := by rw [h4]
     _ = 2 := by ring
 
+-- 1.3.11.16
 example {p q r : ℚ} (h1 : p + q + r = 0) (h2 : p * q + p * r + q * r = 2) :
     p ^ 2 + q ^ 2 + r ^ 2 = -4 :=
   calc

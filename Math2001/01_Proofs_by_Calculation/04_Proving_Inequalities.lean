@@ -78,7 +78,6 @@ example {m n : ℤ} (h : m ^ 2 + n ≤ 2) : n ≤ 2 :=
     n ≤ m ^ 2 + n := by extra
     _ ≤ 2 := by rel [h]
 
-
 -- Example 1.4.8
 -- Exercise: replace the words "sorry" with the correct Lean justification.
 example {x y : ℝ} (h : x ^ 2 + y ^ 2 ≤ 1) : (x + y) ^ 2 < 3 :=
@@ -117,6 +116,7 @@ example {a b c : ℝ} :
 Solve these problems yourself.  You may find it helpful to solve them on paper before typing them
 up in Lean. -/
 
+-- 1.4.11.1
 example {x y : ℤ} (h1 : x + 3 ≥ 2 * y) (h2 : 1 ≤ y) : x ≥ -1 :=
   calc
     x = (x + 3) - 3 := by ring
@@ -124,6 +124,7 @@ example {x y : ℤ} (h1 : x + 3 ≥ 2 * y) (h2 : 1 ≤ y) : x ≥ -1 :=
     _ ≥ 2 * 1 - 3 := by rel [h2]
     _ = -1 := by numbers
 
+-- 1.4.11.2
 example {a b : ℚ} (h1 : 3 ≤ a) (h2 : a + 2 * b ≥ 4) : a + b ≥ 3 :=
   calc
     a + b
@@ -131,6 +132,7 @@ example {a b : ℚ} (h1 : 3 ≤ a) (h2 : a + 2 * b ≥ 4) : a + b ≥ 3 :=
     _ ≥ (3 + 4) / 2 := by rel [h1, h2]
     _ ≥ 3 := by numbers
 
+-- 1.4.11.3
 example {x : ℤ} (hx : x ≥ 9) : x ^ 3 - 8 * x ^ 2 + 2 * x ≥ 3 :=
   calc
     x ^ 3 - 8 * x ^ 2 + 2 * x
@@ -140,6 +142,7 @@ example {x : ℤ} (hx : x ≥ 9) : x ^ 3 - 8 * x ^ 2 + 2 * x ≥ 3 :=
     _ ≥ 9 * 9 + 2 * 9 := by rel [hx]
     _ ≥ 3 := by numbers
 
+-- 1.4.11.4
 example {n : ℤ} (hn : n ≥ 10) : n ^ 4 - 2 * n ^ 2 > 3 * n ^ 3 := by
   have h1 : n ^ 4 - 3 * n ^ 3 - 2 * n ^ 2 - 1 > 0 := by
     calc
@@ -161,6 +164,7 @@ example {n : ℤ} (hn : n ≥ 10) : n ^ 4 - 2 * n ^ 2 > 3 * n ^ 3 := by
     _ ≥ 3 * n ^ 3 + 1 := by extra
     _ > 3 * n ^ 3 := by extra
 
+-- 1.4.11.5
 example {n : ℤ} (h1 : n ≥ 5) : n ^ 2 - 2 * n + 3 > 14 :=
   calc
     n ^ 2 - 2 * n + 3
@@ -170,7 +174,7 @@ example {n : ℤ} (h1 : n ≥ 5) : n ^ 2 - 2 * n + 3 > 14 :=
     _ ≥ 3 * 5 + 3 := by rel [h1]
     _ > 14 := by numbers
 
-
+-- 1.4.11.6
 example {x : ℚ} : x ^ 2 - 2 * x ≥ -1 := by
   calc
     x ^ 2 - 2 * x
@@ -178,6 +182,7 @@ example {x : ℚ} : x ^ 2 - 2 * x ≥ -1 := by
     _ ≥ 0 - 1 := by extra
     _ = -1 := by numbers
 
+-- 1.4.11.7
 example (a b : ℝ) : a ^ 2 + b ^ 2 ≥ 2 * a * b :=
   calc
     a ^ 2 + b ^ 2
