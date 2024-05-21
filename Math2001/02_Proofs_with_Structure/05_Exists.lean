@@ -181,7 +181,7 @@ example {n : ℤ} : ∃ a, 2 * a ^ 3 ≥ n * a + 7 := by
       _ = (n * (n + 7) + 7) + (2 * n ^ 3 + 41 * n ^ 2 + 287 * n + 679) := by ring
       _ ≥ n * (n + 7) + 7 := by extra
 
--- 2.5.9.9
+-- 2.5.9.9 (Done my way)
 example {a b c : ℝ} (ha : a ≤ b + c) (hb : b ≤ a + c) (hc : c ≤ a + b) :
     ∃ x y z, x ≥ 0 ∧ y ≥ 0 ∧ z ≥ 0 ∧ a = y + z ∧ b = x + z ∧ c = x + y := by
   -- Without loss of generality, we can assume a ≤ b ≤ c, since all the variables are symmetric.
@@ -269,6 +269,43 @@ example {a b c : ℝ} (ha : a ≤ b + c) (hb : b ≤ a + c) (hc : c ≤ a + b) :
     calc (a + b - c) / 2
       _ ≥ 0 / 2 := by rel [h]
       _ = 0 := by numbers
+
+  -- a = y + z
+  constructor
+  ring
+
+  -- b = x + z
+  constructor
+  ring
+
+  -- c = x + y
+  ring
+
+-- 2.5.9.9 (Done the intended way)
+example {a b c : ℝ} (ha : a ≤ b + c) (hb : b ≤ a + c) (hc : c ≤ a + b) :
+    ∃ x y z, x ≥ 0 ∧ y ≥ 0 ∧ z ≥ 0 ∧ a = y + z ∧ b = x + z ∧ c = x + y := by
+  use (-a + b + c) / 2, (a - b + c) / 2, (a + b - c) / 2
+
+  constructor
+  -- x ≥ 0
+  · calc (-a + b + c) / 2
+      _ = (-a + (b + c)) / 2 := by ring
+      _ ≥ (-a + a) / 2 := by rel [ha]
+      _ = 0 := by ring
+
+  constructor
+  -- y ≥ 0
+  · calc (a - b + c) / 2
+      _ = (-b + (a + c)) / 2 := by ring
+      _ ≥ (-b + b) / 2 := by rel [hb]
+      _ = 0 := by ring
+
+  constructor
+  -- z ≥ 0
+  · calc (a + b - c) / 2
+      _ = (-c + (a + b)) / 2 := by ring
+      _ ≥ (-c + c) / 2 := by rel [hc]
+      _ = 0 := by ring
 
   -- a = y + z
   constructor
